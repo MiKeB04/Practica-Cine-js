@@ -1,0 +1,45 @@
+
+/*************************************************************************************************/
+/*Caja Personas*/
+
+function generarP(){
+    document.getElementById('generarP').addEventListener('click',function(){generarPersonas()})
+ }
+
+let personas=document.getElementById('personas').innerHTML;
+
+let generarPersonas=function(){
+    let cant=document.getElementById("n-personas").value;
+    if(cant>0){
+        for(let i=0; i<cant;i++){
+            personas+=estructuraPersonas(i);
+        }
+        document.getElementById("personas").innerHTML=personas;
+        //mostrar los botones de agregar 
+        document.getElementById("agregarP").classList.add('mostrar-agregarP');
+        //quitar la funcionalidad de conceptos
+        document.getElementById("titulo-personas").classList.add=('quitar-titulo-personas');
+    }
+}
+
+function estructuraPersonas(cant){
+    return `<div>
+    <label>Cantidad:
+    <input type="number" name="cantidad" id="c${cant}" value="" onblur="CalcularImporte(${cant});"/></label>
+    <label>Descripcion:
+    <input type="text" name="descripcion" placeholder="capture el nombre del producto" /></label>
+    <label>Valor Unitario:
+    <input type="number" name="valorUnitario"  id="v${cant}" value="" step="0.01" onblur="CalcularImporte(${num});" /></label>
+    <label>Importe:
+    <input type="number" name="importe"  id="i${cant}" value="" step="0.01"/></label>
+    </div>
+    `;
+    }
+
+    document.getElementById('agregarP').addEventListener('click',function(){agregarPersona()});
+    let agregarPersona=function(){
+    let totalPersonas=document.getElementsByTagName('cantidadP');
+    let persona=document.createElement('div');
+    persona.innerHTML=estructuraPersonas('totalPersonas.length');
+    document.getElementById('personas').appendChild(persona);
+}
